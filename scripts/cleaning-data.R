@@ -13,8 +13,6 @@ library(janitor)
 # load data ----
 raw_training_features <- read_csv(here("data/raw/training_set_features.csv")) %>%
   clean_names()
-raw_training_labels <- read_csv(here("data/raw/training_set_labels.csv")) %>%
-  clean_names()
 raw_test_features <- read_csv(here("data/raw/test_set_features.csv")) %>%
   clean_names()
 
@@ -255,8 +253,8 @@ write_csv(
 
 # also saving .rdata files to preserve the data types
 
-saveRDS(clean_training_features, file="data/processed/clean_training_set_features.rdata")
-saveRDS(clean_test_features, file="data/processed//clean_test_set_features.rdata")
+saveRDS(clean_training_features, file="data/processed/clean_training_set_features.rds")
+saveRDS(clean_test_features, file="data/processed//clean_test_set_features.rds")
 
 # useful references ----
 # I followed the steps from Practical machine learning in R from Nwanganga and Chapple
