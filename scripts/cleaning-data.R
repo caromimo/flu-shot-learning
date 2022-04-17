@@ -238,18 +238,25 @@ clean_training_features <- features %>%
   filter(dataset == "training_set_features.csv") %>%
   select(-dataset)
 
+clean_test_features <- features %>%
+  filter(dataset == "test_set_features.csv") %>%
+  select(-dataset)
+
+# save csv files but this will not preserve data types
 write_csv(
   clean_training_features, 
   here("data/processed/clean_training_set_features.csv")
   )
 
-clean_test_features <- features %>%
-  filter(dataset == "test_set_features.csv") %>%
-  select(-dataset)
-
 write_csv(
   clean_test_features, 
   here("data/processed/clean_test_set_features.csv")
 )
+
+# also saving .rdata files to preserve the data types
+
+saveRDS(clean_training_features, file="data/processed/clean_training_set_features.rdata")
+saveRDS(clean_test_features, file="data/processed//clean_test_set_features.rdata")
+
 # useful references ----
 # I followed the steps from Practical machine learning in R from Nwanganga and Chapple
